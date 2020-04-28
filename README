@@ -1,0 +1,57 @@
+NAME
+
+    servo_tester.ino - control servo motor via serial console
+
+SYNOPSIS
+
+    after flashing into Arduino, connect via serial console 9600 to send
+    commands:
+
+        servo signal pin is 9
+        supported commands:
+            s [int]              - turn servo to 0-180
+            us [int]             - set puls width 544-? (2400)
+            sweep [int] [int]    - sweep 0-180-0, optional step delay and count
+            ?                    - print this help
+        s 90
+        new pos: 90
+        us 1400
+        new us: 1400
+
+DESCRIPTION
+
+    Serial console accepts commands and sets servo motor accordingly. Servo
+    control pin is hard-coded to pin 9.
+
+COMMANDS
+
+ s [int]
+
+    Set servo angle. Value range 0 to 180.
+
+ us [int]
+
+    Set servo angle using PWM peak time length in nano seconds. Value range
+    564 to 1496.
+
+sweep [int] [int]
+
+    Moves servo from 90 to 180, then back to 0 and again to 90 degree.
+
+    Both parameters are optional. First sets the time in milliseconds to
+    wait between each angle change, default 15. The second is the number of
+    repeats, default 1.
+
+TODO
+
+    In the future, if time and motivation persists, the code may evolve
+    into full multi-servo test/control module.
+
+SEE ALSO
+
+    https://blog.kutej.net/2020/04/servo-tester
+
+LICENSE
+
+    This is free software, licensed under the MIT License.
+
